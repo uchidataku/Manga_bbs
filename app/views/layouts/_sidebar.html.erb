@@ -1,0 +1,16 @@
+<div class="sidebar d-flex flex-column">
+  <div class="sidebar-title text-center">
+    <h3>Menu</h3>
+  </div>
+  <div class="sidebar-item text-center">
+    <h4>探す</h4>
+  </div>
+  <div class="sidebar-item text-center">
+    <h4>作る</h4>
+  </div>
+  <div class="sidebar-item d-flex flex-column text-center">
+    <div class="m-2"><h4>登録/ログイン</h4></div>
+    <div class="m-2"><button class=" btn btn-outline-primary"><%= link_to "新規登録", new_user_registration_path, :style=>"color:blue" %></button></div>
+    <div class="m-2"><button class="btn btn-outline-success"><%= link_to "ログイン", new_user_session_path, :style=>"color:green"  %></button></div>
+  </div>
+</div>
