@@ -1,0 +1,29 @@
+<main class="row">
+	<article class="col-md-8 d-flex flex-column">
+	  <div>
+	    <div class="article_title text-center">
+        <h2>新規スレッド作成</h2>
+      </div>
+      <%= form_for([@user, @post]) do |f| %>
+        <div class="row d-flex flex-column align-items-center">
+          <div class="m-3 d-flex flex-column">
+            <div class="m-2">スレッドタイトル</div>
+            <div class=""><%= f.text_field :title, :size=>"90" %></div>
+          </div>
+          <div class="m-3 d-flex flex-column">
+            <div class="m-2">本文</div>
+            <div><%= f.text_area :text, :size=>"80x10" %></div>
+          </div>
+          <div class="m-3 d-flex flex-column">
+            <div class="m-2 text-center">ジャンル選択</div>
+            <div class="m-2"><%= f.collection_check_boxes :category_ids, Category.all, :id, :name %></div>
+          </div>
+          <div class="m-4"><%= f.submit "新規スレッド登録" %></div>
+        </div>
+      <% end %>
+	  </div>
+	</article>
+	<aside class="col-md-4">
+	  <%= render "layouts/sidebar" %>
+	</aside>
+</main>
