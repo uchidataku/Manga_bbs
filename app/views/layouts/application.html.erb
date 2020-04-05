@@ -1,32 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>BbsApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render "layouts/rails_default" %>
   </head>
-
   <body>
-    <header>
-      <div class="toptitle text-center">
-        <h1>まんが.BBS</h1>
-      </div>
-      <hr color="#888" width="100%" size="2">
-      <nav class="navbar d-flex justify-content-around">
-        <a>ジャンル一覧</a>
-        <a>キーワード検索</a>
-        <a>ログイン</a>
-      </nav>
-    </header>
+    <%= render "layouts/header" %>
     <div class="container">
       <%= yield %>
     </div>
-    <footer>
-      <p class="text-center">created by taku</p>
-    </footer>
+    <%= render "layouts/footer" %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>
