@@ -9,8 +9,13 @@
     <h4>作る</h4>
   </div>
   <div class="sidebar-item d-flex flex-column text-center">
-    <div class="m-2"><h4>登録/ログイン</h4></div>
-    <div class="m-2"><button class=" btn btn-outline-primary"><%= link_to "新規登録", new_user_registration_path, :style=>"color:blue" %></button></div>
-    <div class="m-2"><button class="btn btn-outline-success"><%= link_to "ログイン", new_user_session_path, :style=>"color:green"  %></button></div>
+    <% if user_signed_in? %>
+      <div class="m-2"><h4>ユーザー情報</h4></div>
+      <div class="m-2"><button class="btn btn-outline-danger"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style=>"color:red"  %></button></div>
+    <% else %>
+      <div class="m-2"><h4>登録/ログイン</h4></div>
+      <div class="m-2"><button class=" btn btn-outline-primary"><%= link_to "新規登録", new_user_registration_path, :style=>"color:blue" %></button></div>
+      <div class="m-2"><button class="btn btn-outline-success"><%= link_to "ログイン", new_user_session_path, :style=>"color:green"  %></button></div>
+    <% end %>
   </div>
 </div>
