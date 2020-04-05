@@ -1,0 +1,22 @@
+<main class="row">
+	<article class="col-md-8 d-flex flex-column">
+  	<div class="row no-gutters thread-box">
+    	<div class="col-md-8 d-flex flex-column">
+				<div><h3 class="thread-title"><%= @post.title %></h3></div>
+        <div><p class="thread-text"><%= @post.text %></p></div>
+        <div class="d-flex flex-row justify-content-start">
+          <% @post.categories.each_with_index do |genre| %>
+            <p class="genre"><%= genre.name %></p>
+          <% end %>
+        </div>
+        <p><%= @post.created_at %></p>
+      </div>
+      <div class="col-md-4">
+        <svg><%= @post.picture %></svg>
+      </div>
+    </div>
+	</article>
+	<aside class="col-md-4">
+	  <%= render "layouts/sidebar" %>
+	</aside>
+</main>
