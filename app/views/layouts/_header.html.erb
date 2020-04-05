@@ -1,11 +1,15 @@
 <header>
-  <div class="toptitle text-center">
-    <h1>まんが.BBS</h1>
+  <div class="toplogo text-center">
+    <h1><%= link_to "まんが.BBS", root_path, class:"text-dark", :style=>"text-decoration:none" %></h1>
   </div>
   <hr color="#888" width="100%" size="2">
   <nav class="navbar d-flex justify-content-around">
-    <a>ジャンル一覧</a>
-    <a>キーワード検索</a>
-    <a>ログイン</a>
+    <p>ジャンル一覧</p>
+    <p>キーワード検索</p>
+    <% if user_signed_in? %>
+      <p>ユーザー</p>
+    <% else %>
+      <p><%= link_to "ログイン", new_user_session_path %></p>
+    <% end %>
   </nav>
 </header>
