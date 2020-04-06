@@ -15,6 +15,23 @@
         <svg><%= @post.picture %></svg>
       </div>
     </div>
+    <% @responses.each_with_index do |response| %>
+      <div class="row no-gutters d-flex flex-column">
+        <div class="m-3 p-3 d-flex flex-column response-showbox">
+          <div class="m-2"><%= response.text %></div>
+          <div class="m-2"><%= response.user.username %></div>
+          <div class="m-2"><%= response.created_at %></div>
+        </div>
+      </div>
+    <% end %> 
+    <div class="row d-flex flex-column align-items-center">
+      <%= form_tag("/posts/#{@post.id}/responses", method: :post) do %>
+        <div class="m-3 p-3 response-createbox">
+          <div class="m-3"><textarea name="text" placeholder="コメントを追加..." cols="100" row="8"></textarea></div>
+          <div class="text-center"><input type="submit" value="コメントする", class="btn-xs"></div>
+        </div>
+      <% end %>
+    </div>
 	</article>
 	<aside class="col-md-4">
 	  <%= render "layouts/sidebar" %>

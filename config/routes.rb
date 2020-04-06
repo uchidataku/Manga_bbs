@@ -5,7 +5,9 @@ Rails.application.routes.draw do
          sessions: 'users/sessions',
         passwords: 'users/passwords'
   }
-  resources :posts, only: [:show]
+  resources :posts, only: [:show] do
+    resources :responses, only: [:create]
+  end
   resources :users, only: [:show] do
     resources :posts, only: [:new, :create]
   end
