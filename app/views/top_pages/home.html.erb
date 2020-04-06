@@ -1,35 +1,22 @@
 <main class="row">
 	<article class="col-md-8 d-flex flex-column">
-  	<div class="row no-gutters thread-box">
-    	<div class="col-md-8 d-flex flex-column">
-				<h3 class="thread-title">タイトルタイトル</h3>
-        <p class="thread-text">本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
-        <div class="d-flex flex-row justify-content-start">
-          <p class="genre">ジャンル</p>
-          <p class="genre">ジャンル</p>
-          <p class="genre">ジャンル</p>
+	  <% @posts.each do |thread| %>
+    	<div class="row no-gutters thread-box">
+      	<div class="col-md-8 d-flex flex-column">
+  				<div><h3 class="thread-title"><%= link_to thread.title, post_path(thread.id) %></h3></div>
+          <div><p class="thread-text"><%= thread.text %></p></div>
+          <div class="d-flex flex-row justify-content-start">
+            <% thread.categories.each_with_index do |genre| %>
+              <p class="genre"><%= genre.name %></p>
+            <% end %>
+          </div>
+          <p><%= time_ago_in_words(thread.created_at) %></p>
         </div>
-        <p>作成日時</p>
-      </div>
-      <div class="col-md-4">
-        <svg>picture</svg>
-      </div>
-    </div>
-    <div class="row no-gutters thread-box">
-      <div class="col-md-8 d-flex flex-column">
-        <h3 class="thread-title">タイトルタイトル</h3>
-        <p class="thread-text">本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
-        <div class="d-flex flex-row justify-content-start">
-          <p class="genre">ジャンル</p>
-          <p class="genre">ジャンル</p>
-          <p class="genre">ジャンル</p>
+        <div class="col-md-4">
+          <svg><%= thread.picture %></svg>
         </div>
-        <p>作成日時</p>
       </div>
-      <div class="col-md-4">
-        <svg>picture</svg>
-      </div>
-    </div>
+    <% end %>
 	</article>
 	<aside class="col-md-4">
 	  <%= render "layouts/sidebar" %>
