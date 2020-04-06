@@ -7,7 +7,7 @@
     <p><%= link_to "ジャンル一覧", category_index_path %></p>
     <p><%= link_to "キーワード検索", posts_path %></p>
     <% if user_signed_in? %>
-      <p>ユーザー</p>
+      <p><%= link_to "ユーザー", user_path(current_user) %></p>
     <% else %>
       <p><%= link_to "ログイン", new_user_session_path %></p>
     <% end %>
