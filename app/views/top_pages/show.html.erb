@@ -1,0 +1,21 @@
+<% provide(:title, "ユーザー情報") %>
+<main class="row">
+	<article class="col-md-8 d-flex flex-column">
+	  <div class="m-3 article_title text-center">
+        <h2>ユーザー情報</h2>
+    </div>
+	  <div class="row d-flex flex-column align-items-center">
+      <div class="col-6 d-flex flex-column justify-content-center">
+        <div class="m-3 text-center">ユーザーネーム</div>
+        <div class="m-3 text-center">性別</div>
+      </div>
+      <div class="col-6 d-flex flex-column justify-content-center">
+        <div class="m-3"><h3><%= @user.username %></h3></div>
+        <div class="m-3"><p><%= @user.sex %></p></div>
+      </div>
+    </div>
+	</article>
+	<aside class="col-md-4">
+	  <%= render "layouts/sidebar" %>
+	</aside>
+</main>
