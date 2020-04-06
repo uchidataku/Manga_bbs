@@ -1,0 +1,35 @@
+<main class="row">
+	<article class="col-md-8 d-flex flex-column">
+    <%= form_tag(posts_path, :method => 'get') do %>
+      <div class="row d-flex flex-column align-items-center">
+        <div class="m-3 article_title text-center">
+          <h2>キーワード検索</h2>
+        </div>
+        <div class="m-3 p-3 search-box">
+          <div class="m-3"><%= text_field_tag :search, "", {size:50} %></div>
+          <div class="m-3 text-right"><%= submit_tag "探す", :name => nil %></div>
+        </div>
+      </div>
+    <% end %>
+    <% @searchposts.each do |thread| %>
+    	<div class="row no-gutters thread-box">
+      	<div class="col-md-8 d-flex flex-column">
+  				<div><h3 class="thread-title"><%= link_to thread.title, post_path(thread.id) %></h3></div>
+          <div><p class="thread-text"><%= thread.text %></p></div>
+          <div class="d-flex flex-row justify-content-start">
+            <% thread.categories.each_with_index do |genre| %>
+              <p class="genre"><%= genre.name %></p>
+            <% end %>
+          </div>
+          <p><%= time_ago_in_words(thread.created_at) %></p>
+        </div>
+        <div class="col-md-4">
+          <svg><%= thread.picture %></svg>
+        </div>
+      </div>
+    <% end %>
+	</article>
+	<aside class="col-md-4">
+	  <%= render "layouts/sidebar" %>
+	</aside>
+</main>

@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+  def index
+    @searchposts = Post.search(params[:search])
+  end
+  
   def show
     @post = Post.find(params[:id])
     @responses = @post.responses
