@@ -1,4 +1,17 @@
 class PostsController < ApplicationController
+  def category_index
+    @categories = Category.all
+  end
+  
+  def category
+    @category = Category.find(params[:id])
+    @posts = @category.posts
+  end
+  
+  def index
+    @searchposts = Post.search(params[:search])
+  end
+  
   def show
     @post = Post.find(params[:id])
     @responses = @post.responses

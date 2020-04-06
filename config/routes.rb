@@ -5,7 +5,9 @@ Rails.application.routes.draw do
          sessions: 'users/sessions',
         passwords: 'users/passwords'
   }
-  resources :posts, only: [:show] do
+  get '/category/:id', as: 'category', to: 'posts#category'
+  get '/category_index', to: 'posts#category_index'
+  resources :posts, only: [:show, :index] do
     resources :responses, only: [:create]
   end
   resources :users, only: [:show] do

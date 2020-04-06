@@ -1,0 +1,21 @@
+<main class="row">
+	<article class="col-md-8 d-flex flex-column">
+	  <div class="m-3 article_title text-center">
+      <h2>ジャンル一覧</h2>
+    </div>
+    <% @categories.each do |category| %>
+      <div class="row d-flex flex-column">
+        <ul>
+          <li>
+            <%= link_to(category_path(category.id)) do %>
+              <%= category.name %>(<%= category.posts.count %>)
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+	</article>
+	<aside class="col-md-4">
+	  <%= render "layouts/sidebar" %>
+	</aside>
+</main>
